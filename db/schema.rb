@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_12_145825) do
+ActiveRecord::Schema.define(version: 2018_11_13_144336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,12 @@ ActiveRecord::Schema.define(version: 2018_11_12_145825) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "image_groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "images", force: :cascade do |t|
     t.string "name"
     t.integer "position"
@@ -50,6 +56,11 @@ ActiveRecord::Schema.define(version: 2018_11_12_145825) do
     t.string "file_content_type"
     t.bigint "file_file_size"
     t.datetime "file_updated_at"
+    t.bigint "image_group_id"
+    t.integer "propability"
+    t.string "offer_id"
+    t.index ["image_group_id"], name: "index_images_on_image_group_id"
   end
 
+  add_foreign_key "images", "image_groups", on_delete: :cascade
 end

@@ -1,14 +1,18 @@
 class Image < ApplicationRecord
+  belongs_to :image_group
+
   has_attached_file :file
   validates_attachment_content_type :file, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-  validates :name, :position, :file, presence: true
+  validates :name, :position, :file, :propability, presence: true
   validates :position, numericality: { only_integer: true }
-  validate :position_summary
+  validates :propability, numericality: { only_integer: true }
+  validate :propability_summary
 
-  def position_summary
-    existing_sum = Image.all.reject {|n| n.id == self.id }.map(&:position).sum
-    return errors.add(:position, 'Sum of positions cannot be more than 100') if (existing_sum + position) > 100
+  def propability_summary
+    return unless propability
+    existing_sum = Image.where(image_group_id: image_group_id).all.reject {|n| n.id == self.id }.map(&:propability).sum.to_i
+    return errors.add(:propability, 'Sum of propability cannot be more than 100') if (existing_sum + propability) > 100
     true
   end
 end

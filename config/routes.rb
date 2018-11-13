@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   scope :api do
     scope :v1 do
-      get 'images/random', to: 'api/v1/images#random'
+      get 'image_groups/:image_group_id/images/random', to: 'api/v1/images#random'
     end
   end
   ActiveAdmin.routes(self)
