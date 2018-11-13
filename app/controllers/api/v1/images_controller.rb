@@ -7,7 +7,7 @@ class Api::V1::ImagesController < ApplicationController
         render json: {
           name: image.name,
           position: image.position,
-          url: URI.join(request.url, image.file.url)
+          image: URI.join(request.url, image.file.url)
         }.to_json
         break
       end
