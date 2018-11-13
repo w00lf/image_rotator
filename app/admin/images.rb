@@ -1,5 +1,5 @@
 ActiveAdmin.register Image do
-  permit_params :name, :position, :file, :image_group_id, :propability
+  permit_params :name, :position, :file, :image_group_id, :propability, :offer_id
 
   index do
     column(:id)
@@ -28,6 +28,7 @@ ActiveAdmin.register Image do
       f.input :propability
       f.input :file, as: :file
       f.input :image_group
+      f.input :offer_id
       actions
     end
   end
