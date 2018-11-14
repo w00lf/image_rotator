@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_13_144336) do
+ActiveRecord::Schema.define(version: 2018_11_14_074921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2018_11_13_144336) do
     t.bigint "image_group_id"
     t.integer "propability"
     t.string "offer_id"
+    t.integer "views_count", default: 0, null: false
     t.index ["image_group_id"], name: "index_images_on_image_group_id"
   end
 

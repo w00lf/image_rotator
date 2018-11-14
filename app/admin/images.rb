@@ -5,6 +5,9 @@ ActiveAdmin.register Image do
     column(:id)
     column(:name)
     column(:image_group)
+    column(:views_count)
+    column(:propability) { |object| "#{object.propability} %" }
+    column(:position)
     column(:image) do |object|
       image_tag object.file.url, width: 100, height: 100
     end
