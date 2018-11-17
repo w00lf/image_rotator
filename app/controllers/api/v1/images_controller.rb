@@ -1,8 +1,8 @@
 class Api::V1::ImagesController < ApplicationController
   def random
     image_group = ImageGroup.find(params[:image_group_id])
-    weights = rand(image_group.images.sum(:propability))
-    Image.all.each do |image|
+    weights = rand(0..image_group.images.sum(:propability))
+    image_group.images.all.each do |image|
       weights -= image.propability
       if weights <= 0
         image.increment!(:views_count)
