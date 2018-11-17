@@ -7,6 +7,7 @@ ruby '2.5.3'
 gem 'rails', '~> 5.2.1'
 gem 'pg'
 gem 'activeadmin'
+gem 'activeadmin_addons'
 gem 'devise'
 gem 'paperclip'
 # Use Puma as the app server

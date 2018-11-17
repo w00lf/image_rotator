@@ -1,4 +1,5 @@
 class Image < ApplicationRecord
+  has_many :image_requests, inverse_of: :image
   belongs_to :image_group
 
   has_attached_file :file

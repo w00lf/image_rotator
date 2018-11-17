@@ -5,7 +5,7 @@ class Api::V1::ImagesController < ApplicationController
     image_group.images.all.each do |image|
       weights -= image.propability
       if weights <= 0
-        image.increment!(:views_count)
+        image.image_requests.create
         render json: {
           name: image.name,
           position: image.position,
