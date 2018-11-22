@@ -1,6 +1,10 @@
 ActiveAdmin.register Image do
   permit_params :name, :position, :file, :image_group_id, :propability, :offer_id
 
+  filter :name
+  filter :image_group
+  filter :created_at
+
   index do
     column(:id)
     column(:name)
