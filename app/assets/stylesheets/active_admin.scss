@@ -16,3 +16,13 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+.flex {
+  display: flex;
+}
+
+.flex {
+  & > * {
+    margin: 0 10px;
+  }
+}
