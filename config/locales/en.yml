@@ -44,10 +44,10 @@ en:
         other: Products
         few: Products
       image_info:
-        one: 'Product name'
-        many: 'Product names'
-        other: 'Product names'
-        few: 'Product names'
+        one: 'Text'
+        many: 'Texts'
+        other: 'Texts'
+        few: 'Texts'
       image_group:
         one: 'Product group'
         many: 'Product groups'
@@ -61,3 +61,6 @@ en:
     attributes:
       image:
         image_group: 'Product group'
+        offer_id: 'Product name'
+      image_info:
+        name: 'Text'

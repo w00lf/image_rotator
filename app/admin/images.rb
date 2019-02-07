@@ -11,6 +11,7 @@ ActiveAdmin.register Image do
   filter :created_at
 
   index do
+    column(:offer_id)
     column(:id)
     column(:image_group)
     column(:views_count)
@@ -33,11 +34,11 @@ ActiveAdmin.register Image do
       end
     end
 
-    column(:names) do |object|
+    column(:texts) do |object|
       div class: 'flex' do
         object.image_infos.each.with_index(1) do |info, i|
           div do
-            h3 "Name ##{i}"
+            h3 "Text ##{i}"
             para info.name
           end
         end
