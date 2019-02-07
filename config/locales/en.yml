@@ -31,3 +31,33 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    models:
+      attachment_image:
+        one: 'Product image'
+        many: 'Product images'
+        other: 'Product images'
+        few: 'Product image'
+      image:
+        one: Product
+        many: Products
+        other: Products
+        few: Products
+      image_info:
+        one: 'Product name'
+        many: 'Product names'
+        other: 'Product names'
+        few: 'Product names'
+      image_group:
+        one: 'Product group'
+        many: 'Product groups'
+        other: 'Product groups'
+        few: 'Product groups'
+      image_request:
+        one: 'Product request'
+        many: 'Product requests'
+        other: 'Product requests'
+        few: 'Product requests'
+    attributes:
+      image:
+        image_group: 'Product group'

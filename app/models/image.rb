@@ -1,6 +1,7 @@
 class Image < ApplicationRecord
   has_many :image_requests, inverse_of: :image
   has_many :attachment_images, inverse_of: :image
+  has_many :image_infos, inverse_of: :image
   belongs_to :image_group
 
   has_attached_file :file
@@ -11,7 +12,8 @@ class Image < ApplicationRecord
   validates :propability, numericality: { only_integer: true }
   validate :propability_summary
 
-  accepts_nested_attributes_for :attachment_images, allow_destroy: true
+  accepts_nested_attributes_for :attachment_images, allow_destroy: true, reject_if: ->(attributes){ attributes['_id'].blank? && attributes['file'].blank? }
+  accepts_nested_attributes_for :image_infos, allow_destroy: true, reject_if: ->(attributes){ attributes['_id'].blank? && attributes['name'].blank? }
 
   def propability_summary
     return unless propability

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_003021) do
+ActiveRecord::Schema.define(version: 2019_02_07_084350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,14 @@ ActiveRecord::Schema.define(version: 2019_02_03_003021) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "image_infos", force: :cascade do |t|
+    t.string "name"
+    t.bigint "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["image_id"], name: "index_image_infos_on_image_id"
+  end
+
   create_table "image_requests", force: :cascade do |t|
     t.bigint "image_id"
     t.datetime "created_at", null: false
@@ -83,6 +91,7 @@ ActiveRecord::Schema.define(version: 2019_02_03_003021) do
   end
 
   add_foreign_key "attachment_images", "images", on_delete: :cascade
+  add_foreign_key "image_infos", "images", on_delete: :cascade
   add_foreign_key "image_requests", "images", on_delete: :cascade
   add_foreign_key "images", "image_groups", on_delete: :cascade
 end

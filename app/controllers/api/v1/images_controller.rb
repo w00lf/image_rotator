@@ -21,8 +21,11 @@ class Api::V1::ImagesController < ApplicationController
     images = image.attachment_images.each.with_object({}).with_index do |(attachment, result), i|
       index = i.zero? ? '' : i.to_s
       result["image#{index}"] = URI.join(request.url, attachment.file.url)
-      result["name#{index}"] = attachment.name
     end
-    result.merge(images).to_json
+    names = image.image_infos.each.with_object({}).with_index do |(info, result), i|
+      index = i.zero? ? '' : i.to_s
+      result["name#{index}"] = info.name
+    end
+    result.merge(images).merge(names).to_json
   end
 end
