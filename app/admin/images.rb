@@ -25,9 +25,6 @@ ActiveAdmin.register Image do
             para do
               image_tag attachment.file.url, width: 100, height: 100
             end
-            para do
-              "name: #{attachment.name}"
-            end
           end
         end
         para
